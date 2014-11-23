@@ -3,17 +3,20 @@
 
     <string name="app_name">Pantalla3</string>
 
-    <!--Definimos las cajas de texto que mostraremos en nuestra pantalla. -->
+    <!-- Definimos las cajas de texto que mostraremos en nuestra pantalla. -->
     <string name="txvSaludo">Bienvenido a nuestra Agenda</string>
     <string name="txvNombre">Nombre</string>
     <string name="txvTelefono">Telefono</string>
 
-    <!--Definimos el texto que llevaran nuestros botones-->
+    <!-- Definimos el texto que llevaran nuestros botones -->
     <string name="btnGuardar">Guardar</string>
     <string name="btnListar">Listar</string>
     <string name="action_settings">Settings</string>
 
-    <!--Añadimos los String que vamos a usar para nuestras Toast.-->
+    <!-- Añadimos los String que vamos a usar para nuestras Toast. -->
     <string name="noMatch">No se encuentran coincidencias.</string>
     <string name="noNomTelf">Falta nombre o telefono</string>
+    <string name="title_activity_activity2">Activity2</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>
