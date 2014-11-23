@@ -2,7 +2,15 @@
 <resources>
 
     <string name="app_name">Pantalla3</string>
-    <string name="hello_world">Hello world!</string>
+
+    <!--Definimos las cajas de texto que mostraremos en nuestra pantalla. -->
+    <string name="txvSaludo">Bienvenido a nuestra Agenda</string>
+    <string name="txvNombre">Nombre</string>
+    <string name="txvTelefono">Telefono</string>
+
+    <!--Definimos el texto que llevaran nuestros botones-->
+    <string name="btnGuardar">Guardar</string>
+    <string name="btnListar">Listar</string>
     <string name="action_settings">Settings</string>
 
 </resources>
