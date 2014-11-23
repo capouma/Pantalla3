@@ -13,4 +13,7 @@
     <string name="btnListar">Listar</string>
     <string name="action_settings">Settings</string>
 
+    <!--Añadimos los String que vamos a usar para nuestras Toast.-->
+    <string name="noMatch">No se encuentran coincidencias.</string>
+    <string name="noNomTelf">Falta nombre o telefono</string>
 </resources>
