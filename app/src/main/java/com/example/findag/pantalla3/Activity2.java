@@ -2,23 +2,29 @@ package com.example.findag.pantalla3;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
-
 public class Activity2 extends ListActivity
 {
+    //Definimos un ArrayList que usaremos para recoger el intent.
+    ArrayList<Contactos> lista;
 
+    //Definimos nuestra variable static y final que sera nuestro requestCode(esta variable es la que identifica el intent que enviamos).
+    private final static int EDITANDO = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity2);
         // Recogemos el intent que mandamos de la Activity1 que contiene nuestro ArrayList en un ArrayList del mismo tipo que creamos en esta activity
-        ArrayList<Contactos> lista = (ArrayList<Contactos>) getIntent().getSerializableExtra("lista");
+        lista = (ArrayList<Contactos>) getIntent().getSerializableExtra("lista");
 
         setListAdapter(new ArrayAdapter<Contactos>(this, android.R.layout.simple_list_item_1,lista));
     }
@@ -45,4 +51,14 @@ public class Activity2 extends ListActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+    // Creamos el metodo onClickListener
+    public  void onListItemClick(ListView parent, View v, int posicion, long id)
+    {
+        Intent editando = new Intent(Activity2.this, Activity3.class);
+        editando.putExtra("contactoEdit", lista.get(posicion));
+        startActivityForResult(editando, EDITANDO);
+
+    }
+
 }
