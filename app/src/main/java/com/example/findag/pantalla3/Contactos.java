@@ -1,9 +1,11 @@
 package com.example.findag.pantalla3;
 
+import java.io.Serializable;
+
 /**
  * Created by findag on 23/11/14.
  */
-public class Contactos
+public class Contactos implements Serializable
 {
     // Definimos las variables que tendremos.
     private String nombre;
@@ -39,5 +41,11 @@ public class Contactos
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    // Sobreescribimos el metodo toString para poder visualizar los datos de nuestro ArrayList
+    @Override
+    public String toString() {
+        return nombre + " " + telefono;
     }
 }
