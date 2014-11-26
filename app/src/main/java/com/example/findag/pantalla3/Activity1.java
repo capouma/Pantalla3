@@ -2,6 +2,7 @@ package com.example.findag.pantalla3;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,9 @@ public class Activity1 extends Activity
     // Definimos el ArrayList en el que guardaremos nuestros contactos.
     ArrayList<Contactos> insertContac = new ArrayList<Contactos>();
 
+    //Definimos nuestra variable static que sera nuestro requestCode(esta variable es la que identifica el intent que enviamos).
+    private final static int CONTACTOS = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -36,7 +40,7 @@ public class Activity1 extends Activity
         Button btnGuardar = (Button) findViewById(R.id.btnGuardar);
         Button btnListar = (Button) findViewById(R.id.btnListar);
 
-        // Definimos el OnClick del boton Guardar.
+        // Definimos el onClick del boton Guardar.
         btnGuardar.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -61,6 +65,22 @@ public class Activity1 extends Activity
 
             }
         });
+
+        // Definimos el onClick del boton Listar
+        btnListar.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                Intent contactos = new Intent(Activity1.this, Activity2.class);
+
+                contactos.putExtra("lista",insertContac);
+
+                startActivityForResult(contactos, CONTACTOS);
+
+            }
+        });
+
 
 
 
