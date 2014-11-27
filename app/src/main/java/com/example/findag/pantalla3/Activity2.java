@@ -17,6 +17,9 @@ public class Activity2 extends ListActivity
     //Definimos un ArrayList que usaremos para recoger el intent.
     ArrayList<Contactos> lista;
 
+    // Variable que contendra la posicion de nuestro contacto a modificar.
+    int reEscribe;
+
     //Definimos nuestra variable static y final que sera nuestro requestCode(esta variable es la que identifica el intent que enviamos).
     private final static int EDITANDO = 1;
     @Override
@@ -58,6 +61,16 @@ public class Activity2 extends ListActivity
         Intent editando = new Intent(Activity2.this, Activity3.class);
         editando.putExtra("contactoEdit", lista.get(posicion));
         startActivityForResult(editando, EDITANDO);
+
+    }
+    // Con el metodo onActivityResult recogeremos el valor del intent de la Activity3
+    protected void onActivityResult (int requestCode, int resultCode, Intent modificado)
+    {
+        super.onActivityResult(requestCode, resultCode, modificado);
+
+        Contactos editado = (Contactos) modificado.getSerializableExtra("contactoEditado");
+        lista.remove(reEscribe);
+        lista.add(reEscribe,editado);
 
     }
 
