@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class Activity1 extends Activity
 {
 
+    // Definimos los dos EditText ( nombre y telefono)
     EditText edtNombre;
     EditText edtTelefono;
 
@@ -35,6 +36,7 @@ public class Activity1 extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity1);
+
 
         // Definimos los botones Guardar y Listar.
         Button btnGuardar = (Button) findViewById(R.id.btnGuardar);
@@ -109,6 +111,17 @@ public class Activity1 extends Activity
         return super.onOptionsItemSelected(item);
     }
 
+    // Con el metodo onActivityResult recogeremos el valor del intent de la Activity3
+    protected void onActivityResult (int requestCode, int resultCode, Intent listaFinal)
+    {
+        if (resultCode == RESULT_OK)
+        {
+            insertContac = (ArrayList<Contactos>)listaFinal.getExtras().getSerializable("nuevaLista");
+        }
+
+
+    }
+
     // Este metodo recibira un entero que dependiendo del valor que lleve conseguiremos que se nos muestre una Toast con uno u otro mensaje.
     public void showToast(int comprueba)
     {
@@ -131,4 +144,6 @@ public class Activity1 extends Activity
         }
         toast.show();
     }
+
+
 }
