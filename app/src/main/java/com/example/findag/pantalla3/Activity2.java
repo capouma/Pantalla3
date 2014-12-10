@@ -2,13 +2,16 @@ package com.example.findag.pantalla3;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,9 +29,11 @@ public class Activity2 extends ListActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity2);
+
         // Recogemos el intent que mandamos de la Activity1 que contiene nuestro ArrayList en un ArrayList del mismo tipo que creamos en esta activity
         lista = (ArrayList<Contactos>) getIntent().getSerializableExtra("lista");
 
+        //Definimos nuestro adaptador
         setListAdapter(new ArrayAdapter<Contactos>(this, android.R.layout.simple_list_item_1,lista));
     }
 
@@ -55,11 +60,12 @@ public class Activity2 extends ListActivity
         return super.onOptionsItemSelected(item);
     }
 
-    // Creamos el metodo onClickListener
+    // Creamos el metodo onClickListener de nuestra lista
     public  void onListItemClick(ListView parent, View v, int posicion, long id)
     {
         Intent editando = new Intent(Activity2.this, Activity3.class);
         editando.putExtra("contactoEdit", lista.get(posicion));
+        reEscribe = posicion;
         startActivityForResult(editando, EDITANDO);
 
     }
@@ -72,6 +78,23 @@ public class Activity2 extends ListActivity
         lista.remove(reEscribe);
         lista.add(reEscribe,editado);
 
+        Intent listaFinal = new Intent();
+        listaFinal.putExtra("nuevaLista", lista);
+        setResult(RESULT_OK, listaFinal);
+        finish();
     }
+/*
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        switch (keyCode)
+        {
+            case KeyEvent.KEYCODE_BACK:
 
+                Toast.makeText(this,"prueba patras", Toast.LENGTH_LONG);
+
+        }
+        return super.onKeyDown(keyCode,event);
+    }
+*/
 }
